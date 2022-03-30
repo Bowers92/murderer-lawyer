@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Web based 'Odd one out' game for university project.">
-    <title>Odd One Out</title>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-  </head>
-  <body>
-    <h1>Odd One Out Game</h1>
-    <section id=mainSection>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Web based 'Odd one out' game for university project.">
+  <title>Odd One Out</title>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+</head>
+
+<body>
+  <h1>Odd One Out Game</h1>
+  <section id=mainSection>
     <p>How many people are playing?</p>
-      <form id="playForm">
-        <select id=playerCount name="Player Count" title="Player Drop-down">
-          <option value=""></option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-        </select>
-        <p id="playerOutput"></p>
-        <button type="button" name="playButton" id="playButton" hidden="true">Play!</button>
-      </form>
-    </section>
-  </body>
+    <form id="playForm">
+      <select id=playerCount name="Player Count" title="Player Drop-down">
+        <option value=""></option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+      <p id="playerOutput"></p>
+      <button type="button" name="playButton" id="playButton" hidden="true">Play!</button>
+    </form>
+  </section>
+</body>
+
 </html>

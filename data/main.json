@@ -1,0 +1,25 @@
+{
+  "players": [{
+      "player1": "Mike"
+    },
+    {
+      "player2": "Phil"
+    },
+    {
+      "player3": "Becky"
+    }
+  ]
+  "words": [{
+      "This": ["is it expensive?", "would you eat it?", "Does it float?"]
+    },
+    {
+      "is": ["is it expensive?", "would you eat it?", "Does it float?"]
+    },
+    {
+      "an": ["is it expensive?", "would you eat it?", "Does it float?"]
+    },
+    {
+      "example": ["is it expensive?", "would you eat it?", "Does it float?"]
+    },
+  ]
+}
