@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
   var playerCount = 0;
-
   $('#playerCount').on("change", showPlayerCount);
   $('#playButton').on("click", loadNameInput)
 
