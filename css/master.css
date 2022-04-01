@@ -1,5 +1,6 @@
 #title{
-  padding: 15px;
+  /* margin-top:5vh; */
+  padding:2vh;
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
@@ -14,16 +15,16 @@
 
 #main{
   margin:0vh 25vh;
+  padding-top:2vh;
 }
 
 body{
   text-align:center;
   min-height:100vh;
+  max-width:100%;
   background-image:url("../images/tessback.png");
   background-repeat:no-repeat;
   background-size:100% 100%;
-  padding:30px;
-  margin:20px;
   font-family:cursive;
 }
 
@@ -44,4 +45,16 @@ li{
   padding:0vh 5vh 0vh 5vh;
   text-decoration:none;
   display:inline;
+}
+
+html{
+  width:100%;
+}
+
+footer{
+  position:fixed;
+  left:0;
+  bottom:0;
+  background-color:rgba(194, 194, 194, 0.88);
+  width:100%;
 }
