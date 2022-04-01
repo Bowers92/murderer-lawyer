@@ -13,11 +13,11 @@ $(document).ready(function() {
 
   function loadNameInput() {
     var workingSection = document.getElementById("workingSection");
-    mainSection.innerHTML = "<h2> Please enter player names</h2>";
+    workingSection.innerHTML = "<h2> Please enter player names</h2>";
     for (let i = 0; i < playerCount; i++) {
-      mainSection.innerHTML += "<p> Player " + (i + 1) + "'s name:</p>";
-      mainSection.innerHTML += ("<input type='text' name='Player " + (i + 1) + "' placeholder='Player " + (i + 1) + " name..' name id='player" + (i + 1) + "name'>");
-      mainSection.innerHTML += "<br>"
+      workingSection.innerHTML += "<p> Player " + (i + 1) + "'s name:</p>";
+      workingSection.innerHTML += ("<input type='text' name='Player " + (i + 1) + "' placeholder='Player " + (i + 1) + " name..' name id='player" + (i + 1) + "name'>");
+      workingSection.innerHTML += "<br>"
     }
   };
 
