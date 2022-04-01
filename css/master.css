@@ -1,7 +1,10 @@
 #title{
   padding: 15px;
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
   margin-top: 0px;
+  margin-bottom:0px;
 }
 
 #gameTitle{
@@ -9,9 +12,8 @@
   color:rgb(12, 113, 205);
 }
 
-#mainSection{
-  font-family: cursive;
-    background-image:url("../images/tessback.png");
+#main{
+  margin:0vh 25vh;
 }
 
 body{
@@ -23,4 +25,23 @@ body{
   padding:30px;
   margin:20px;
   font-family:cursive;
+}
+
+nav{
+  border-bottom:1px solid black;
+  border-left:1px solid black;
+  border-right:1px solid black;
+  padding-bottom:1vh;
+}
+
+ul{
+  list-style-type:none;
+  text-align: center;
+  display:inline;
+}
+
+li{
+  padding:0vh 5vh 0vh 5vh;
+  text-decoration:none;
+  display:inline;
 }

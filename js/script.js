@@ -12,7 +12,7 @@ $(document).ready(function() {
   }
 
   function loadNameInput() {
-    var mainSection = document.getElementById("mainSection");
+    var workingSection = document.getElementById("workingSection");
     mainSection.innerHTML = "<h2> Please enter player names</h2>";
     for (let i = 0; i < playerCount; i++) {
       mainSection.innerHTML += "<p> Player " + (i + 1) + "'s name:</p>";
