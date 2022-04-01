@@ -4,6 +4,11 @@
   margin-top: 0px;
 }
 
+#gameTitle{
+  text-decoration: none;
+  color:rgb(12, 113, 205);
+}
+
 #mainSection{
   font-family: cursive;
     background-image:url("../images/tessback.png");
@@ -11,14 +16,11 @@
 
 body{
   text-align:center;
+  min-height:100vh;
   background-image:url("../images/tessback.png");
   background-repeat:no-repeat;
   background-size:100% 100%;
   padding:30px;
   margin:20px;
   font-family:cursive;
-}
-
-html, body{
-  min-height:100%;
 }
