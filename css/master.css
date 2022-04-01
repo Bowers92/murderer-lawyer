@@ -2,17 +2,23 @@
   padding: 15px;
   border: 1px solid black;
   margin-top: 0px;
-  background-image:url("tessback.png");
 }
 
 #mainSection{
   font-family: cursive;
-  background-color:rgb(208, 148, 33)
+    background-image:url("../images/tessback.png");
 }
 
 body{
   text-align:center;
-  /* background-color:rgb(77, 182, 179); */
+  background-image:url("../images/tessback.png");
+  background-repeat:no-repeat;
+  background-size:100% 100%;
   padding:30px;
+  margin:20px;
   font-family:cursive;
+}
+
+html, body{
+  min-height:100%;
 }
