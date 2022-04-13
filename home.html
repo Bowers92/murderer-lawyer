@@ -12,53 +12,51 @@
 </head>
 
 <body>
-<div id="main">
-  <header>
-    <h1 id="title"><a href="home.html" id="gameTitle">Odd One Out Game</a></h1>
-  </header>
-  <nav>
-    <ul>
-      <li>Home</li>
-      <li>About Us</li>
-      <li>Contact Us</li>
-    </ul>
-  </nav>
-  <!-- Player Count Section -->
-  <section id=playerNumberSection>
-    <p>How many people are playing?</p>
-    <form id="playForm">
-      <select id="inputPlayerCount" name="Player Count" title="Player Drop-down">
-        <option value=""></option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-      </select>
-      <p id="outputSection"></p>
-      <button type="button" name="startNamingButton" id="startNamingButton" hidden="true">Go!</button>
-    </form>
-  </section>
-  <!-- Player Naming Section -->
-  <section id=playerNamingSection hidden="true">
-      <p>Insert player names: </p>
-      <form id="nameForm">
-        <input type="text" class="nameInput" id="player1Name"  placeholder="Player 1's name.."/>
-        <input type="text" class="nameInput" id="player2Name" placeholder="Player 2's name.."/>
-        <input type="text" class="nameInput" id="player3Name" placeholder="Player 3's name.."/>
-        <input type="text" class="nameInput" id="player4Name" placeholder="Player 4's name.."/>
-        <input type="text" class="nameInput" id="player5Name" placeholder="Player 5's name.."/>
-        <input type="text" class="nameInput" id="player6Name" placeholder="Player 6's name.."/>
-        <input type="text" class="nameInput" id="player7Name" placeholder="Player 7's name.."/>
-        <input type="text" class="nameInput" id="player8Name" placeholder="Player 8's name.."/>
-        <button type="button" name="startPlayingButton" id="startPlayingButton">Play!</button>
+  <div id="main">
+    <header>
+      <h1 id="title"><a href="home.html" id="gameTitle">Odd One Out Game</a></h1>
+    </header>
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>About Us</li>
+        <li>Contact Us</li>
+      </ul>
+    </nav>
+    <!-- Player Count Section -->
+    <section id=playerCountSection>
+      <p>How many people are playing?</p>
+      <form id="playForm">
+        <select id="playerCountInput" name="Player Count" title="Player Drop-down">
+          <option value=""></option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+        <button type="button" name="startNamingButton" id="startNamingButton" hidden="true">Go!</button>
       </form>
     </section>
-</div>
-<footer>
-  <p> This is a footer</p>
-</footer>
+    <!-- Player Naming Section - Naturally hidden -->
+    <section id=playerNamingSection hidden="true">
+      <p>Insert player names: </p>
+      <form id='nameForm'>
+      </form>
+    </section>
+    <!-- GamePlay - Naturally hidden -->
+    <section id=testingSection hidden="true">
+      <p>Insert player names: </p>
+      <form id="nameForm">
+        <!-- input determined by script.js - loadNameInput(); -->
+      </form>
+    </section>
+    <p id="outputSection"></p>
+  </div>
+  <footer>
+    <p> This is a footer</p>
+  </footer>
 </body>
 
 </html>
