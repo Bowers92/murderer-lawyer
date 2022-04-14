@@ -1,9 +1,11 @@
 let players = [];
+let [murdererIndex, lawyerIndex] = [];
 
 $(document).ready(function () {
   $('#playerCountInput').on("change", processPlayerCount);
   $('#startNamingButton').on("click", loadNameInput);
-  $('#continueButton').on("click", function() {processNames(players)});
+  $('#continueButton').on("click", function() {processNames(players); [murderer, lawyer] = determineRoles(players); welcomePlayers(players)});
+  $('#playButton').on("click", printRoles);
 });
 
 function processPlayerCount() {
@@ -44,7 +46,9 @@ function processNames(){
     console.log("pushing " + playerName);
   }
   console.log("Array after push: " + arguments[0] + ". Length: " + arguments[0].length);
+}
 
+function welcomePlayers(){
   let welcomeString = "Welcome to the game ";
   for(let i = 0; i < players.length; i++){
     if(i === (players.length-1)){
@@ -55,5 +59,22 @@ function processNames(){
     }
   }
   $('#welcomeForm').html(welcomeString);
-  $('#outputSection').html("Press 'play' to begin!")
+  $('#outputSection').html("Press 'play' to begin! Murderer = " + murderer + " lawyer = " + lawyer)
+}
+
+ function determineRoles(arr){
+   let randomNumber = Math.floor(Math.random() * (arr.length-1));
+   let secondRandomNumber = Math.floor(Math.random() * (arr.length-1));
+    while(randomNumber === secondRandomNumber){
+      secondRandomNumber = Math.floor(Math.random() * (arr.length-1));
+    }
+    console.log("array: " + arr);
+    console.log("first random number: " + randomNumber + " Second random: " + secondRandomNumber + " arraypeople: " + arr[randomNumber] + " and " + arr[secondRandomNumber]); 
+
+    return [randomNumber, secondRandomNumber];
+}
+
+function printRoles(){
+  console.log("M : " + murderer);
+  console.log("L : " +lawyer);
 }
