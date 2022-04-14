@@ -25,6 +25,13 @@
   margin-right:auto;
 }
 
+#playerCountInput{
+  display:block;
+  margin:auto;
+  margin-bottom:2vh;
+  margin-top:2vh;
+}
+
 @media (max-width: 800px) {
   li{
     display:block;
