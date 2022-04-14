@@ -4,8 +4,8 @@ let [murdererIndex, lawyerIndex] = [];
 $(document).ready(function () {
   $('#playerCountInput').on("change", processPlayerCount);
   $('#startNamingButton').on("click", loadNameInput);
-  $('#continueButton').on("click", function() {processNames(players); [murderer, lawyer] = determineRoles(players); welcomePlayers(players)});
-  $('#playButton').on("click", printRoles);
+  $('#continueButton').on("click", function() {processNames(players); [murdererIndex, lawyerIndex] = determineRoles(players); welcomePlayers(players)});
+  $('#playButton').on("click", function(){ determineRoles(players)});
 });
 
 function processPlayerCount() {
@@ -59,14 +59,14 @@ function welcomePlayers(){
     }
   }
   $('#welcomeForm').html(welcomeString);
-  $('#outputSection').html("Press 'play' to begin! Murderer = " + murderer + " lawyer = " + lawyer)
+  $('#outputSection').html("Press 'play' to begin! **Murderer = " + players[murdererIndex] + " lawyer = " + players[lawyerIndex]+"**")
 }
 
  function determineRoles(arr){
-   let randomNumber = Math.floor(Math.random() * (arr.length-1));
-   let secondRandomNumber = Math.floor(Math.random() * (arr.length-1));
+   let randomNumber = Math.floor(Math.random() * arr.length); 
+   let secondRandomNumber = Math.floor(Math.random() * arr.length);
     while(randomNumber === secondRandomNumber){
-      secondRandomNumber = Math.floor(Math.random() * (arr.length-1));
+      secondRandomNumber = Math.floor(Math.random() * arr.length);
     }
     console.log("array: " + arr);
     console.log("first random number: " + randomNumber + " Second random: " + secondRandomNumber + " arraypeople: " + arr[randomNumber] + " and " + arr[secondRandomNumber]); 
@@ -75,6 +75,6 @@ function welcomePlayers(){
 }
 
 function printRoles(){
-  console.log("M : " + murderer);
-  console.log("L : " +lawyer);
+  console.log("M : " + players[murdererIndex]);
+  console.log("L : " +players[lawyerIndex]);
 }
