@@ -26,16 +26,6 @@ function loadNameInput() {
   $('#playerNamingSection').show();
 }
 
-function welcomePlayers(){
-  $('#playerNamingSection').hide();
-  $('#welcomeSection').show();
-  let welcomeString = "";
-  for(let i = 0; i < players.length; i++){
-        welcomeString += "welcome " + players[(i+1)];
-  }
-  $('#welcomeForm').html(welcomeString);
-}
-
 function processNames(){
   $('#playerNamingSection').hide();
   $('#welcomeSection').show();
