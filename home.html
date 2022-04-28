@@ -24,10 +24,10 @@
       </ul>
     </nav>
     <!-- Player Count Section -->
-    <section id=playerCountSection>
+    <section id='playerCountSection'>
       <p>How many people are playing?</p>
-      <form id="playForm">
-        <select id="playerCountInput" name="Player Count" title="Player Drop-down">
+      <form id='playForm'>
+        <select id='playerCountInput' name="Player Count" title="Player Drop-down">
           <option value=""></option>
           <option value="3">3</option>
           <option value="4">4</option>
@@ -40,7 +40,7 @@
       </form>
     </section>
     <!-- Player Naming Section -->
-    <section id=playerNamingSection hidden="true">
+    <section id='playerNamingSection' hidden="true">
       <p>Insert player names: </p>
       <form id='nameForm'>
         <!-- input determined by script.js -> loadNameInput(); -->
@@ -48,15 +48,27 @@
       <button type='button' id='playerNamingButton'>Continue</button>
     </section>
     <!-- Welcome Section -->
-    <section id=welcomeSection hidden="true">
+    <section id='welcomeSection' hidden="true">
       <p>Welcome!</p>
       <form id='welcomeForm'>
         <!-- input determined by script.js -> loadNameInput(); -->
       </form>
-      <button type='button' id='welcomeButton'>Play!</button>
     </section>
+    <section id="playSection" hidden="true">
+      <!-- input determined by script.js -->
+    </section>
+
     <p id="outputSection"></p>
   </div>
+  <section id="questionSection" hidden="true">
+    <!-- input determined by script.js -->
+    <h1> question time!!!!! </h1>
+  </section>
+  <p id="outputSection"></p>
+  <button type='button' id='continuePlayButton' hidden="true">Start</button>
+  <button type='button' id='revealButton' hidden = 'true'></button>
+  <button type='button' id='questionButton' hidden = 'true'>Time for questions</button>
+</div>
   <footer>
     <p> This is a footer</p>
   </footer>
