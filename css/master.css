@@ -12,9 +12,16 @@
   color:rgb(12, 113, 205);
 }
 
-#main{
+#top{
   margin:0vh 25vh;
-  padding-top:2vh;
+  margin-top:2vh;
+}
+
+#playArea{
+  margin:0vh 25vh;
+  background-color:rgba(244, 248, 219, 0.451);
+  height:50vh;
+  padding:2.5%
 }
 
 .nameInput{
@@ -72,7 +79,7 @@ li{
   padding-left:2.5%
 }
 html{
-  width:100%;
+  max-width:100%;
 }
 
 footer{
@@ -81,4 +88,8 @@ footer{
   bottom:0;
   background-color:rgba(194, 194, 194, 0.88);
   width:100%;
+}
+
+section{
+  height:inherit;
 }

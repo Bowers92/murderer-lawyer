@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <div id="main">
+  <div id="top">
     <header>
       <h1 id="title"><a href="home.html" id="gameTitle">The Murderer's Lawyer</a></h1>
     </header>
@@ -23,6 +23,9 @@
         <li>Contact Us</li>
       </ul>
     </nav>
+  </div>
+
+  <div id="playArea">
     <!-- Player Count Section -->
     <section id='playerCountSection'>
       <p>How many people are playing?</p>
@@ -39,6 +42,7 @@
         <button type="button" name="playerCountButton" id="playerCountButton" hidden="true">Go!</button>
       </form>
     </section>
+
     <!-- Player Naming Section -->
     <section id='playerNamingSection' hidden="true">
       <p>Insert player names: </p>
@@ -47,6 +51,7 @@
       </form>
       <button type='button' id='playerNamingButton'>Continue</button>
     </section>
+
     <!-- Welcome Section -->
     <section id='welcomeSection' hidden="true">
       <p>Welcome!</p>
@@ -54,23 +59,25 @@
         <!-- input determined by script.js -> loadNameInput(); -->
       </form>
     </section>
+
+    <!-- Play Section -->
     <section id="playSection" hidden="true">
       <!-- input determined by script.js -->
     </section>
 
+    <!-- Question Section -->
+    <section id="questionSection" hidden="true">
+      <!-- input determined by script.js -->
+      <h1> question time!!!!! </h1>
+    </section>
     <p id="outputSection"></p>
+    <button type='button' id='continuePlayButton' hidden="true">Start</button>
+    <button type='button' id='revealButton' hidden = 'true'></button>
+    <button type='button' id='questionButton' hidden = 'true'>Time for questions</button>
   </div>
-  <section id="questionSection" hidden="true">
-    <!-- input determined by script.js -->
-    <h1> question time!!!!! </h1>
-  </section>
-  <p id="outputSection"></p>
-  <button type='button' id='continuePlayButton' hidden="true">Start</button>
-  <button type='button' id='revealButton' hidden = 'true'></button>
-  <button type='button' id='questionButton' hidden = 'true'>Time for questions</button>
-</div>
   <footer>
     <p> This is a footer</p>
   </footer>
+</div>
 </body>
 </html>
