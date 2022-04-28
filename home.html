@@ -28,6 +28,7 @@
   <div id="main">
     <!-- Player Count Section -->
     <section id='playerCountSection'>
+      <h1>Game on! </h1> 
       <p>How many people are playing?</p>
       <form>
         <select id='playerCountInput' name="Player Count" title="Player Drop-down">
@@ -45,38 +46,40 @@
 
     <!-- Player Naming Section -->
     <section id='playerNamingSection' hidden="true">
-      <p>Insert player names: </p>
+      <h1> What are your names? </h1> 
       <form id='playerNamingArea'><!-- input determined by script.js -> loadNameInput(); --></form>
       <button type='button' id='playerNamingButton'>Continue</button>
-      <p class="outputSection"></p>
+      <p class="outputArea"></p>
     </section>
 
     <!-- Welcome Section -->
     <section id='welcomeSection' hidden="true">
+      <h1> Welcome </h1>
       <div id='welcomeArea'> <!-- input determined by script.js -> loadNameInput(); --> </div>
       <br />
       <button type='button' class='continuePlayButton' hidden="true">Start</button>
-      <p class="outputSection"></p>
+      <p class="outputArea"></p>
     </section>
 
-    <!-- Play Section -->
-    <section id="playSection" hidden="true">
-      <div id="playArea"><!-- input determined by script.js --> </div>
+    <!-- Role Section -->
+    <section id="roleSection" hidden="true">
+      <h1> Reveal the word! </h1>
+      <div id="roleArea"><!-- input determined by script.js --> </div>
       <br />
-      <button type='button' id='revealButton' hidden = 'true'></button>
+      <button type='button' id='revealRoleButton' hidden = 'true'></button>
       <button type='button' class='continuePlayButton' hidden="true">Start</button>
-      <button type='button' class='questionButton' hidden = 'true'>Time for questions</button>
-      <p class="outputSection"></p>
+      <button type='button' id="completeRolesButton" hidden="true">Understood</button>
+      <p class="outputArea"></p>
     </section>
 
     <!-- Question Section -->
     <section id='questionSection' hidden="true">
+      <h1>Time for questions!</h1>
       <div id="questionArea"><!-- input determined by script.js -->
-      <h1> question time!!!!! </h1>
       </div>
       <br />
-      <button type='button' class='questionButton' hidden = 'true'>Time for questions</button>
-      <p class="outputSection"></p>
+      <button type='button' is='questionButton' hidden = 'true'>Time for questions</button>
+      <p class="outputArea"></p>
     </section>
 
   </div>
