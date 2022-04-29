@@ -57,7 +57,7 @@
       <h1> Welcome </h1>
       <div id='welcomeArea'> <!-- input determined by script.js -> loadNameInput(); --> </div>
       <br />
-      <button type='button' class='continuePlayButton' hidden="true">Start</button>
+      <button type='button' class='continueRoleButton' hidden="true">Start</button>
       <p class="outputArea"></p>
     </section>
 
@@ -67,24 +67,26 @@
       <div id="roleArea"><!-- input determined by script.js --> </div>
       <br />
       <button type='button' id='revealRoleButton' hidden = 'true'></button>
-      <button type='button' class='continuePlayButton' hidden="true">Start</button>
-      <button type='button' id="completeRolesButton" hidden="true">Understood</button>
+      <button type='button' class='continueRoleButton' hidden="true">Start</button>
+      <button type='button' class="continueQuestionButton" hidden="true">Understood</button>
       <p class="outputArea"></p>
     </section>
 
     <!-- Question Section -->
     <section id='questionSection' hidden="true">
-      <h1>Time for questions!</h1>
+      <h1 id ='questionTime'>Time for questions!</h1>
       <div id="questionArea"><!-- input determined by script.js -->
       </div>
       <br />
-      <button type='button' is='questionButton' hidden = 'true'>Time for questions</button>
+      <button type='button' id='questionButton' hidden = 'true'>Time for questions</button>
+      <button type='button' class="continueQuestionButton" hidden="true">Understood</button>
+      <button type='button' id='votingButton' hidden = 'true'>Time for questions</button>
       <p class="outputArea"></p>
     </section>
 
   </div>
   <footer>
-    <p> This is a footer</p>
+    <p>Manchester Metropolitan University 2022</p>
   </footer>
 </div>
 </body>

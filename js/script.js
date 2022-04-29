@@ -1,7 +1,9 @@
 let players = [];
 let [murdererIndex, lawyerIndex] = [];
 let currentPlayerIndex = -1; 
-let currentPlayer = "";  
+let currentPlayer = "";
+let roundCount = 0; 
+let isRoundLimit = false;
 
 $(document).ready(function () {
   //Starting screen 
@@ -16,14 +18,15 @@ $(document).ready(function () {
     processNames(players);
     [murdererIndex, lawyerIndex] = determineRoles(players);
     welcomePlayers(players);
+    roundLimit = players.length * 2;
     $('#playerNamingSection').hide();
     $('#welcomeSection').show();
   });
 //Determining next player, asking for ready check. 
-  $('.continuePlayButton').on("click", function () {
+  $('.continueRoleButton').on("click", function () {
     $('#welcomeSection').hide(); 
     $('#roleSection').show();
-    $('.continuePlayButton').html("OK");
+    $('.continueRoleButton').html("OK");
     $('.outputArea').html("");
     determinePlayer(currentPlayer);
     roleReadyCheck();
@@ -33,17 +36,28 @@ $(document).ready(function () {
     showRole();
   });
 //Determining who is next, 
-  $('#completeRolesButton').on("click", function(){
+  $('.continueQuestionButton').on("click", function(){
     determinePlayer();
-    questionReadyCheck();
-    $('#questionSection').show();
-    $('#roleSection').hide();
+    if(isRoundLimit === false){
+      questionReadyCheck();
+      $('#roleSection').hide();
+      $('#questionSection').show();
+      $('#questionButton').show();
+      $('.questionTime').hide()
+    } else{
+      $('votingButton').show();
+    }
   });
   $('#questionButton').on("click", function(){
-    askQuestion();
+    roundCount++;
+    console.log(roundCount + " | " + isRoundLimit + " | " + currentPlayerIndex + " | " + players.length);
+    if(roundCount > (players.length) * 2){
+      isRoundLimit = true;
+    }
+    askQuestion(isRoundLimit);
+
   });
 });
-
 //Shows the players how many players have been selected, shows hidden button to continue
 function showPlayerCount() {
   playerCount = $('#playerCountInput').val();
@@ -61,7 +75,6 @@ function loadNameInput() {
   }
   $('#playerNamingArea').html(inputFieldString);
 }
-
 //Saves user-supplied names into 'players' array
 function processNames(arr) {
   for (let i = 0; i < playerCount; i++) {
@@ -70,7 +83,6 @@ function processNames(arr) {
     arr.push(playerName);
   }
 }
-
 //Generates two different random numbers based on the amount of players. 
 //Return used to supply indexing of murderer and lawyer
 function determineRoles(arr) {
@@ -83,7 +95,6 @@ function determineRoles(arr) {
   console.log("random1 : " + randomNumber + " random 2: " + secondRandomNumber);
   return [randomNumber, secondRandomNumber];
 }
-
 //Welcomes players based on names supplied - initially used for testing purposes
 function welcomePlayers() {
   let welcomeString = "";
@@ -96,32 +107,28 @@ function welcomePlayers() {
   }
   $('#welcomeArea').html(welcomeString);
   $('.outputArea').html("Press 'Start' to begin! **Murderer = " + players[murdererIndex] + " lawyer = " + players[lawyerIndex] + "**")
-  $('.continuePlayButton').show(); 
+  $('.continueRoleButton').show(); 
 
 }
-
 //Determines who is next in the player queue and asks them to click the button when ready
 function determinePlayer() {
   currentPlayerIndex = (currentPlayerIndex + 1) % players.length; 
   currentPlayer = players[currentPlayerIndex]; 
 }
-
 //Ready screen for role revealing 
 function roleReadyCheck(){
   $('#roleArea').html(currentPlayer + ", it's your turn! Make sure only you can see the screen and press the button."); 
-  $('.continuePlayButton').hide();
+  $('.continueRoleButton').hide();
   $('#revealRoleButton').html("I'm " + currentPlayer);
   $('#revealRoleButton').show();
 }
-
 //Ready screen for question asking
 function questionReadyCheck(){
   $('#questionArea').html(currentPlayer + ", time for a question. Gain control and press the button."); 
-  $('#completeRolesButton').hide();
+  $('.continueQuestionButton').hide();
   $('#questionButton').html("I'm " + currentPlayer);
   $('#questionButton').show();
 }
-
 //Reveals whether player is the lawyer, the killer, or a regular player
 function showRole() {
   console.log(currentPlayerIndex + "<-- current player Index");
@@ -137,20 +144,26 @@ function showRole() {
   }
   $('#revealRoleButton').hide();
   if (currentPlayerIndex === (players.length-1)){
-    $('#completeRolesButton').show();
+    $('.continueQuestionButton').show();
   } else { 
-    $('.continuePlayButton').show();
+    $('.continueRoleButton').show();
   }
 }
-
 //Asks question --- *** need to create list of questions relevant to category - find out how to read from XML file ***
 //Should read from XML file. 
-function askQuestion(){
+function askQuestion(isRoundLimit){
   $('#roleSection').hide(); 
   $('#questionSection').show(); 
-  $('.questionButton').hide();
+  $('#questionButton').hide();
+  $('.continueQuestionButton').show()
 
-  let question = "What is the meaning of life?";
+  if(isRoundLimit == false){
+  let question = "Would you put this in your mouth?";
+  $('#questionArea').html(question);
+  } else{
+    $('#questionArea').html("<h1>Question round is over! Time to vote.</h1>");
+    $('.continueQuestionButton').hide()
+  }
 }
 
 // ** For use if needed - used for debugging **
