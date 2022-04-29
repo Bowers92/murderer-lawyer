@@ -48,14 +48,23 @@ $(document).ready(function () {
       $('votingButton').show();
     }
   });
+  //Question players in turns. Increment round count
   $('#questionButton').on("click", function(){
     roundCount++;
-    console.log(roundCount + " | " + isRoundLimit + " | " + currentPlayerIndex + " | " + players.length);
     if(roundCount > (players.length) * 2){
       isRoundLimit = true;
+
     }
     askQuestion(isRoundLimit);
-
+  });
+  $('.votingButton').on('click', function(){
+    var buttonString = "";
+    $('#votingHeader').html("Pick who you think is the killer:");
+    for(var i = 0; i < players.length; i++){
+      buttonString += "<button type='button' class='playerVoteButton'>"+players[i]+"</button>";
+      console.log(buttonString);
+    }
+    $('#votingArea').html(buttonString);
   });
 });
 //Shows the players how many players have been selected, shows hidden button to continue
@@ -158,11 +167,13 @@ function askQuestion(isRoundLimit){
   $('.continueQuestionButton').show()
 
   if(isRoundLimit == false){
-  let question = "Would you put this in your mouth?";
-  $('#questionArea').html(question);
+    let question = "Would you put this in your mouth?";
+    $('#questionArea').html(question);
   } else{
-    $('#questionArea').html("<h1>Question round is over! Time to vote.</h1>");
-    $('.continueQuestionButton').hide()
+    $('.continueQuestionButton').html("Time to vote!");
+    $('#questionSection').hide();
+    $('#votingSection').show();
+    $('.votingButton').show();
   }
 }
 

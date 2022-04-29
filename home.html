@@ -45,7 +45,7 @@
     <!-- Player Naming Section -->
     <section id='playerNamingSection' hidden="true">
       <h1> What are your names? </h1> 
-      <form id='playerNamingArea'><!-- input determined by script.js -> loadNameInput(); --></form>
+      <form id='playerNamingArea'><!-- input determined by script.js --></form>
       <button type='button' id='playerNamingButton'>Continue</button>
       <p class="outputArea"></p>
     </section>
@@ -53,7 +53,7 @@
     <!-- Welcome Section -->
     <section id='welcomeSection' hidden="true">
       <h1> Welcome </h1>
-      <div id='welcomeArea'> <!-- input determined by script.js -> loadNameInput(); --> </div>
+      <div id='welcomeArea'> <!-- input determined by script.js --> </div>
       <br />
       <button type='button' class='continueRoleButton' hidden="true">Start</button>
       <p class="outputArea"></p>
@@ -73,12 +73,19 @@
     <!-- Question Section -->
     <section id='questionSection' hidden="true">
       <h1 id ='questionTime'>Time for questions!</h1>
-      <div id="questionArea"><!-- input determined by script.js -->
-      </div>
+      <div id="questionArea"><!-- input determined by script.js --></div>
       <br />
-      <button type='button' id='questionButton' hidden = 'true'>Time for questions</button>
+      <button type='button' id='questionButton' hidden = 'true'></button>
       <button type='button' class="continueQuestionButton" hidden="true">Understood</button>
-      <button type='button' id='votingButton' hidden = 'true'>Time for questions</button>
+      <p class="outputArea"></p>
+    </section>
+
+    <!-- Voting Section -->
+    <section id='votingSection' hidden="true">
+      <h1 id="votingHeader">Question round is over! Time to vote.</h1>
+      <div id="votingArea"><!-- input determined by script.js --></div>
+      <br />
+      <button type='button' class='votingButton' hidden = 'true'>Time for voting</button>
       <p class="outputArea"></p>
     </section>
 
