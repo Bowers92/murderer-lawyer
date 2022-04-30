@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,21 +8,16 @@
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <link rel="stylesheet" href="css/master.css" />
+  <!-- Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <div id="top">
+  <div id="main">
     <header>
       <h1 id="title"><a href="home.html" id="gameTitle">The Murderer's Lawyer</a></h1>
     </header>
-    <nav>
-      <ul>
-        <li><a href="home.html">Reset</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <div id="main">
     <!-- Player Count Section -->
     <section id='playerCountSection'>
       <h1>Game on! </h1> 
@@ -88,7 +82,10 @@
       <button type='button' class='votingButton' hidden = 'true'>Time for voting</button>
       <p class="outputArea"></p>
     </section>
-
+    <ul>
+      <li><a href="#.html" style="position:fixed; right:65%;">Rules</li>
+      <li><a href="home.html" style = "position:fixed; left: 65%;">Reset</a></li>
+    </ul>
   </div>
   <footer>
     <p>Manchester Metropolitan University 2022</p>

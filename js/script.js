@@ -5,8 +5,11 @@ let currentPlayer = "";
 let roundCount = 0; 
 let isRoundLimit = false;
 
+let words = ["Llama", "Fish"]; 
+let questions = ["Would you put this in your mouth", "How many of these could you carry?"];
+
 $(document).ready(function () {
-  //Starting screen 
+//Starting screen 
   $('#playerCountInput').on("change", showPlayerCount);
   $('#playerCountButton').on("click", function(){
     loadNameInput();
@@ -48,12 +51,11 @@ $(document).ready(function () {
       $('votingButton').show();
     }
   });
-  //Question players in turns. Increment round count
+//Question players in turns. Increment round count
   $('#questionButton').on("click", function(){
     roundCount++;
     if(roundCount > (players.length) * 2){
       isRoundLimit = true;
-
     }
     askQuestion(isRoundLimit);
   });
@@ -74,7 +76,6 @@ function showPlayerCount() {
   $('#outputSection').html("You have selected " + playerCount + " players. Press 'Go!' to start");
   $('#playerCountButton').show();
 }
-
 //Determies how many input fields are required (based on player count), inserts as html to playerNamingArea
 function loadNameInput() {
   $("#outputSection").html("Please ensure all names are entered and press 'start' when ready >> <br />  " + playerCount);
@@ -117,7 +118,6 @@ function welcomePlayers() {
   $('#welcomeArea').html(welcomeString);
   $('.outputArea').html("Press 'Start' to begin! **Murderer = " + players[murdererIndex] + " lawyer = " + players[lawyerIndex] + "**")
   $('.continueRoleButton').show(); 
-
 }
 //Determines who is next in the player queue and asks them to click the button when ready
 function determinePlayer() {
@@ -141,7 +141,6 @@ function questionReadyCheck(){
 //Reveals whether player is the lawyer, the killer, or a regular player
 function showRole() {
   console.log(currentPlayerIndex + "<-- current player Index");
-
   if(currentPlayerIndex === murdererIndex){
     $('#roleArea').html("You are the murderer! Try to guess your way through the questions and avoid detection"); 
   } 
@@ -165,7 +164,6 @@ function askQuestion(isRoundLimit){
   $('#questionSection').show(); 
   $('#questionButton').hide();
   $('.continueQuestionButton').show()
-
   if(isRoundLimit == false){
     let question = "Would you put this in your mouth?";
     $('#questionArea').html(question);
@@ -176,7 +174,6 @@ function askQuestion(isRoundLimit){
     $('.votingButton').show();
   }
 }
-
 // ** For use if needed - used for debugging **
 // function printRoles() {
 //   console.log("M : " + players[murdererIndex]);
