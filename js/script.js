@@ -4,8 +4,8 @@ let currentPlayerIndex = -1;
 let currentPlayer = "";
 let roundCount = 0; 
 let isRoundLimit = false;
-let playerVotes = [0,0,0,0,0,0,0,0];
-
+let playerVotes = [0, 0, 0, 0, 0, 0, 0, 0];
+let votedIndex = 0;
 let words = ["Llama", "Fish"]; 
 let questions = ["Would you put this in your mouth", "How many of these could you carry?"];
 
@@ -98,19 +98,30 @@ $(document).ready(function () {
   $('#castVote8').on("click", function(){
     totalVotes = handleVoting(8, totalVotes);
   });
+
+  $('#endButton').on("click", function(){
+    if(murdererIndex === votedIndex){
+      $('#endArea').append("<br>Congratulations! You were right! The killer was " + players[murdererIndex]);
+    } else{ 
+      $('#endArea').append("<br>Unlucky! You were wrong! The killer was " + players[murdererIndex]);
+    }
+  });
 });
+
 
 function handleVoting(buttonNumber, totalVotes){
   totalVotes = totalVotes+1;
   playerVotes[buttonNumber]++;
-  console.log(playerVotes);
+  console.log("array: " + playerVotes + "and max: " + Math.max.apply(Math, playerVotes));
   if(totalVotes >= players.length){
+    votedIndex = playerVotes.indexOf(Math.max.apply(Math, playerVotes));
+    console.log("votedIndex = " + votedIndex + " Player: " + players[votedIndex]);
     for(let i = 0; i< players.length; i++){
       $('#castVote'+i).hide();
     }
-    $('#votingHeader').html("<p>Voting has finished!");
-    $('.votingButton').hide();
-    $('#endButton').show();
+    $('#votingSection').hide();
+    $('#endArea').html("The player voted was " + players[votedIndex]);
+    $('#endSection').show();
   }
   return totalVotes;
 }
@@ -123,7 +134,7 @@ function showPlayerCount() {
 }
 //Determies how many input fields are required (based on player count), inserts as html to playerNamingArea
 function loadNameInput() {
-  $("#outputSection").html("Please ensure all names are entered and press 'start' when ready >> <br />  " + playerCount);
+  $("#outputSection").html("Please ensure all names are entered and press 'start' when ready <br />  " + playerCount);
   let inputFieldString = "";
   for (let i = 0; i < playerCount; i++) {
     inputFieldString += "<input type=\"text\" class=\"nameInput\" id=\"player" + (i + 1) + "Name\" placeholder=\"Player " + (i + 1) + "'s name..\" />";
@@ -219,8 +230,3 @@ function askQuestion(isRoundLimit){
     $('.votingButton').show();
   }
 }
-// ** For use if needed - used for debugging **
-// function printRoles() {
-//   console.log("M : " + players[murdererIndex]);
-//   console.log("L : " + players[lawyerIndex]);
-// }
