@@ -116,7 +116,7 @@ function welcomePlayers() {
     }
   }
   $('#welcomeArea').html(welcomeString);
-  $('.outputArea').html("Press 'Start' to begin! **Murderer = " + players[murdererIndex] + " lawyer = " + players[lawyerIndex] + "**")
+  $('.outputArea').html("Press 'Start' to begin!");
   $('.continueRoleButton').show(); 
 }
 //Determines who is next in the player queue and asks them to click the button when ready
