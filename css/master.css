@@ -1,8 +1,24 @@
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
 #title{
   padding:2vh;
   margin-top: 0px;
   margin-bottom:0px;
   border-bottom:3px solid white;
+}
+
+#playerCountInput{
+  display:block;
+  margin:auto;
+  margin-bottom:2vh;
+  margin-top:2vh;
 }
 
 #gameTitle{
@@ -19,6 +35,11 @@
   border-radius:10px;
 }
 
+.hide{
+  visibility: hidden;
+  opacity: 0;
+}
+
 .nameInput{
   margin-bottom:2vh;
   display:block;
@@ -26,8 +47,7 @@
   margin-right:auto;
 }
 
-.playerVoteButton{
-  display:block;
+.vote{
   padding:20px;
   text-align:center;
   margin-bottom:10px;
@@ -37,13 +57,6 @@
 
 .textArea{
   padding-bottom:2vh;
-}
-
-#playerCountInput{
-  display:block;
-  margin:auto;
-  margin-bottom:2vh;
-  margin-top:2vh;
 }
 
 body{
@@ -96,20 +109,6 @@ section{
   margin-right:auto;
   font-weight:400;
   animation:fadeIn 1s linear;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity:0;
-  }
-  100% {
-    opacity:1;
-  }
-}
-
-.hide{
-  visibility: hidden;
-  opacity: 0;
 }
 
 a{

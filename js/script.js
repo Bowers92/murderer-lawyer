@@ -4,19 +4,20 @@ let currentPlayerIndex = -1;
 let currentPlayer = "";
 let roundCount = 0; 
 let isRoundLimit = false;
+let playerVotes = [0,0,0,0,0,0,0,0];
 
 let words = ["Llama", "Fish"]; 
 let questions = ["Would you put this in your mouth", "How many of these could you carry?"];
 
 $(document).ready(function () {
-//Starting screen 
+  //Starting screen 
   $('#playerCountInput').on("change", showPlayerCount);
   $('#playerCountButton').on("click", function(){
     loadNameInput();
     $('#playerCountSection').hide();
     $('#playerNamingSection').show();
   });
-//Saving names, determining roles and welcoming players. 
+  //Saving names, determining roles and welcoming players. 
   $('#playerNamingButton').on("click", function () {
     processNames(players);
     [murdererIndex, lawyerIndex] = determineRoles(players);
@@ -25,7 +26,7 @@ $(document).ready(function () {
     $('#playerNamingSection').hide();
     $('#welcomeSection').show();
   });
-//Determining next player, asking for ready check. 
+  //Determining next player, asking for ready check. 
   $('.continueRoleButton').on("click", function () {
     $('#welcomeSection').hide(); 
     $('#roleSection').show();
@@ -34,11 +35,11 @@ $(document).ready(function () {
     determinePlayer(currentPlayer);
     roleReadyCheck();
   }); 
-//Showing role to player.
+  //Showing role to player.
   $('#revealRoleButton').on("click", function () {
     showRole();
   });
-//Determining who is next, 
+  //Determining who is next, 
   $('.continueQuestionButton').on("click", function(){
     determinePlayer();
     if(isRoundLimit === false){
@@ -51,7 +52,7 @@ $(document).ready(function () {
       $('votingButton').show();
     }
   });
-//Question players in turns. Increment round count
+  //Question players in turns. Increment round count
   $('#questionButton').on("click", function(){
     roundCount++;
     if(roundCount > (players.length) * 2){
@@ -63,12 +64,56 @@ $(document).ready(function () {
     var buttonString = "";
     $('#votingHeader').html("Pick who you think is the killer:");
     for(var i = 0; i < players.length; i++){
-      buttonString += "<button type='button' class='playerVoteButton'>"+players[i]+"</button>";
-      console.log(buttonString);
+      $('#castVote'+i).css({"display":"block"});
+      $('#castVote'+i).html(players[i]);
     }
     $('#votingArea').html(buttonString);
   });
+  //Voting section
+  var totalVotes=0;
+  $('#castVote0').on("click", function(){
+    totalVotes = handleVoting(0, totalVotes);
+  });
+  $('#castVote1').on("click", function(){
+    totalVotes = handleVoting(1, totalVotes);
+  });
+  $('#castVote2').on("click", function(){
+    totalVotes = handleVoting(2, totalVotes);
+  });
+  $('#castVote3').on("click", function(){
+    totalVotes = handleVoting(3, totalVotes);
+  });  
+  $('#castVote4').on("click", function(){
+    totalVotes = handleVoting(4, totalVotes);
+  });
+  $('#castVote5').on("click", function(){
+    totalVotes = handleVoting(5, totalVotes);
+  });
+  $('#castVote6').on("click", function(){
+    htotalVotes = handleVoting(6, totalVotes);
+  });
+  $('#castVote7').on("click", function(){
+    totalVotes = handleVoting(7, totalVotes);
+  });  
+  $('#castVote8').on("click", function(){
+    totalVotes = handleVoting(8, totalVotes);
+  });
 });
+
+function handleVoting(buttonNumber, totalVotes){
+  totalVotes = totalVotes+1;
+  playerVotes[buttonNumber]++;
+  console.log(playerVotes);
+  if(totalVotes >= players.length){
+    for(let i = 0; i< players.length; i++){
+      $('#castVote'+i).hide();
+    }
+    $('#votingHeader').html("<p>Voting has finished!");
+    $('.votingButton').hide();
+    $('#endButton').show();
+  }
+  return totalVotes;
+}
 //Shows the players how many players have been selected, shows hidden button to continue
 function showPlayerCount() {
   playerCount = $('#playerCountInput').val();
