@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Web based 'Odd one out' game for university project.">
-  <title>The Murderer's Lawyer</title>
+  <title>The Outlier</title>
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <link rel="stylesheet" href="css/master.css" />
@@ -16,7 +16,7 @@
 <body>
   <div id="main">
     <header>
-      <h1 id="title"><a href="home.html" id="gameTitle">The Murderer's Lawyer</a></h1>
+      <h1 id="title"><a href="home.html" id="gameTitle">The Outlier</a></h1>
     </header>
     <!-- Player Count Section -->
     <section id='playerCountSection'>
@@ -55,7 +55,7 @@
 
     <!-- Role Section -->
     <section id="roleSection" hidden="true">
-      <h1> Reveal the word! </h1>
+      <h1 id="roleHeader"> Reveal the word! </h1>
       <div id="roleArea" class="textArea"><!-- input determined by script.js --> </div>
       <br />
       <button type='button' id='revealRoleButton' hidden = 'true'></button>
@@ -66,11 +66,11 @@
 
     <!-- Question Section -->
     <section id='questionSection' hidden="true">
-      <h1 id ='questionTime'>Time for questions!</h1>
+      <h1 id ='questionHeader'>Question Time</h1>
       <div id="questionArea" class="textArea"><!-- input determined by script.js --></div>
       <br />
       <button type='button' id='questionButton' hidden = 'true'></button>
-      <button type='button' class="continueQuestionButton" hidden="true">Understood</button>
+      <button type='button' class="continueQuestionButton" hidden="true">Done</button>
       <p class="outputArea"></p>
     </section>
 
@@ -87,7 +87,7 @@
       <button type="button" class="vote" id="castVote5" hidden="true"></button>
       <button type="button" class="vote" id="castVote6" hidden="true"></button>
       <button type="button" class="vote" id="castVote7" hidden="true"></button>
-      <button type='button' class='votingButton' hidden ='true'>Time for voting</button>
+      <button type='button' id='votingButton' hidden ='true'>Vote the Outlier!</button>
       <p class="outputArea"></p>
     </section>
 
@@ -98,6 +98,7 @@
         <br />
         <button type='button' id="endButton">Reveal</button>
         <p class="outputArea"></p>
+        <button type='button' id='resetButton' hidden ='true'><a href="home.html">Play Again?</a></button>
       </section>
     <ul>
       <li><a href="#.html" style="position:fixed; right:65%;">Rules</li>

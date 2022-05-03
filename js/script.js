@@ -1,5 +1,5 @@
 let players = [];
-let [murdererIndex, lawyerIndex] = [];
+let outlierIndex = -1;
 let currentPlayerIndex = -1; 
 let currentPlayer = "";
 let roundCount = 0; 
@@ -20,7 +20,7 @@ $(document).ready(function () {
   //Saving names, determining roles and welcoming players. 
   $('#playerNamingButton').on("click", function () {
     processNames(players);
-    [murdererIndex, lawyerIndex] = determineRoles(players);
+    outlierIndex= determineRoles(players);
     welcomePlayers(players);
     roundLimit = players.length * 2;
     $('#playerNamingSection').hide();
@@ -41,15 +41,16 @@ $(document).ready(function () {
   });
   //Determining who is next, 
   $('.continueQuestionButton').on("click", function(){
+
     determinePlayer();
     if(isRoundLimit === false){
       questionReadyCheck();
       $('#roleSection').hide();
       $('#questionSection').show();
       $('#questionButton').show();
-      $('.questionTime').hide()
+      $('.questionHeader').hide()
     } else{
-      $('votingButton').show();
+      $('#votingButton').show();
     }
   });
   //Question players in turns. Increment round count
@@ -60,7 +61,7 @@ $(document).ready(function () {
     }
     askQuestion(isRoundLimit);
   });
-  $('.votingButton').on('click', function(){
+  $('#votingButton').on('click', function(){
     var buttonString = "";
     $('#votingHeader').html("Pick who you think is the killer:");
     for(var i = 0; i < players.length; i++){
@@ -98,17 +99,18 @@ $(document).ready(function () {
   $('#castVote8').on("click", function(){
     totalVotes = handleVoting(8, totalVotes);
   });
-
+  //End reveal
   $('#endButton').on("click", function(){
-    if(murdererIndex === votedIndex){
-      $('#endArea').append("<br>Congratulations! You were right! The killer was " + players[murdererIndex]);
+    if(outlierIndex === votedIndex){
+      $('#endArea').append("<br>Congratulations! You were right! The killer was " + players[outlierIndex]);
     } else{ 
-      $('#endArea').append("<br>Unlucky! You were wrong! The killer was " + players[murdererIndex]);
+      $('#endArea').append("<br>Unlucky! You were wrong! The killer was " + players[outlierIndex]);
     }
+    $('#endButton').hide(); 
+    $('#resetButton').show(); 
   });
 });
-
-
+// *************** functions *******************
 function handleVoting(buttonNumber, totalVotes){
   totalVotes = totalVotes+1;
   playerVotes[buttonNumber]++;
@@ -150,16 +152,12 @@ function processNames(arr) {
   }
 }
 //Generates two different random numbers based on the amount of players. 
-//Return used to supply indexing of murderer and lawyer
+//Return used to supply indexing of the outlier
 function determineRoles(arr) {
   let randomNumber = Math.floor(Math.random() * arr.length);
-  let secondRandomNumber = Math.floor(Math.random() * arr.length);
-  //while loop to ensure different random numbers -- murderer cannot be lawyer
-  while (randomNumber === secondRandomNumber) {
-    secondRandomNumber = Math.floor(Math.random() * arr.length);
-  }
-  console.log("random1 : " + randomNumber + " random 2: " + secondRandomNumber);
-  return [randomNumber, secondRandomNumber];
+  //while loop to ensure different random numbers
+  console.log("random1 : " + randomNumber);
+  return randomNumber;
 }
 //Welcomes players based on names supplied - initially used for testing purposes
 function welcomePlayers() {
@@ -189,19 +187,17 @@ function roleReadyCheck(){
 }
 //Ready screen for question asking
 function questionReadyCheck(){
+  $('#questionHeader').html("Question Time");
   $('#questionArea').html(currentPlayer + ", time for a question. Gain control and press the button."); 
   $('.continueQuestionButton').hide();
   $('#questionButton').html("I'm " + currentPlayer);
   $('#questionButton').show();
 }
-//Reveals whether player is the lawyer, the killer, or a regular player
+//Reveals whether player is the outlier, or a regular player
 function showRole() {
   console.log(currentPlayerIndex + "<-- current player Index");
-  if(currentPlayerIndex === murdererIndex){
-    $('#roleArea').html("You are the murderer! Try to guess your way through the questions and avoid detection"); 
-  } 
-  else if(currentPlayerIndex === lawyerIndex){
-      $('#roleArea').html("You are the lawyer! Try to guess who the murderer is and protect them! Hint: the word is 'fish'"); 
+  if(currentPlayerIndex === outlierIndex){
+    $('#roleArea').html("You are the outlier! Try to guess your way through the questions and avoid detection"); 
   } 
   else { 
     $('#roleArea').html("The word is fish."); 
@@ -216,6 +212,7 @@ function showRole() {
 //Asks question --- *** need to create list of questions relevant to category - find out how to read from XML file ***
 //Should read from XML file. 
 function askQuestion(isRoundLimit){
+  $('#questionHeader').html(currentPlayer + " ask the group: ")
   $('#roleSection').hide(); 
   $('#questionSection').show(); 
   $('#questionButton').hide();
@@ -227,6 +224,6 @@ function askQuestion(isRoundLimit){
     $('.continueQuestionButton').html("Time to vote!");
     $('#questionSection').hide();
     $('#votingSection').show();
-    $('.votingButton').show();
+    $('#votingButton').show();
   }
 }
