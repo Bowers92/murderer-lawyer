@@ -120,7 +120,6 @@ $(document).ready(function () {
   });
   //Determining who is next, 
   $('.continueQuestionButton').on("click", function(){
-
     determinePlayer();
     if(isRoundLimit === false){
       questionReadyCheck();
@@ -210,7 +209,6 @@ $(document).ready(function () {
 
 function setupVoting(){
   var buttonString = "";
-  console.log(currentPlayer);
     $('#votingHeader').html("<span class='emphasis'>" + currentPlayer + "</span> who you think is the outlier?");
     for(var i = 0; i < players.length; i++){
       if(currentPlayer != players[i]){
@@ -230,7 +228,6 @@ function handleVoting(buttonNumber, totalVotes, players){
   playerVotes[buttonNumber]++;
   if(totalVotes >= players.length){
     votedIndex = playerVotes.indexOf(Math.max.apply(Math, playerVotes));
-    console.log("votedIndex = " + votedIndex + " Player: " + players[votedIndex]);
     for(let i = 0; i< players.length; i++){
       $('#castVote'+i).hide();
     }
@@ -261,7 +258,7 @@ function validNameInput(){
   var checkNames= [];
   for(var i = 0 ; i < playerCount; i++){
     var name = $('#player' + (i + 1) + 'Name').val();
-    name = name.replace(/\s/g, ''); //removing spaces
+    name = name.replace(/\s/g, ''); //removing empty spaces
     if(name === "" || checkNames.includes(name)){
       return false;
     } 
@@ -275,7 +272,6 @@ function validNameInput(){
 function processNames(arr) {
   for (let i = 0; i < playerCount; i++) {
     let playerName = $('#player' + (i + 1) + 'Name').val(); //temp player name as needed
-    console.log("pushing " + playerName);
     arr.push(playerName);
   }
 }
@@ -284,7 +280,6 @@ function processNames(arr) {
 function determineRoles(arr) {
   let randomNumber = Math.floor(Math.random() * arr.length);
   //while loop to ensure different random numbers
-  console.log("random1 : " + randomNumber);
   return randomNumber;
 }
 //Welcomes players based on names supplied - initially used for testing purposes
