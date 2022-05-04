@@ -20,10 +20,10 @@
 
 #main{
   margin:10vh 50vh;
-  height:60vh;
+  height:65vh;
   color:white;
   border: 1px solid white;
-  border-radius:10px;
+  border-radius:15px;
 }
 
 .hide{
@@ -43,11 +43,12 @@
   margin-left:auto;
   margin-right:auto;
   animation:fadeIn 1s linear;
+  border-radius: 15%;
 }
 
 .emphasis{
-  color:black;
-  /* font-weight: 600; */
+  color:#dcc113dc;
+  font-weight: 600;
 }
 
 .popupContent {
@@ -58,9 +59,10 @@
   width: 500px;
   height: 500px;
   text-align: center;
-  background-image: linear-gradient(to bottom , #b54b12, #dcc113dc);
+  background-image: linear-gradient(to top left , #460955, #0E357A);
   box-sizing: border-box;
   border:1px solid white;
+  color:white;
   padding: 10px;
   z-index: 100;
   display: none;
@@ -68,23 +70,25 @@
 
 .close-button {
   position: absolute;
-  right: 20px;
-  top: 15px;
-  background-color: #cb000097;
+  right: 10px;
+  top: 10px;
+  background-color: #dcc1135d;
   color: white;
-  border-radius: 50%;
+  border-radius: 40%;
   padding: 4px;
 }
 
 .close-button:hover {
-  background-color:rgb(158, 58, 4);
+  background-color:#dcc113dc;
 }
 
 body{
   text-align:center;
   min-height:100vh;
+  max-height:100%;
   max-width:100%; 
   /* background-image: linear-gradient(to bottom , #b54b12, #dcc113dc); */
+  background-image: linear-gradient(to bottom , #460955, #0E357A);
   font-family: 'Nunito', sans-serif; 
 }
 
@@ -93,7 +97,7 @@ nav{
 }
 
 button{
-  background-color:#cb000097;
+  background-color:#b54b12;
   border:1px solid white;
   border-radius:15px;
   color:white;
@@ -105,7 +109,8 @@ button{
 }
 
 button:hover{
-  background-color:rgb(158, 58, 4)
+  background-color:#dcc113dc
+  
 }
 
 ul{
@@ -140,7 +145,7 @@ footer{
 
 section{
   justify-content:center;
-  margin-top:3vh;
+  margin-top:7vh;
   margin-left:auto;
   margin-right:auto;
   font-weight:400;
@@ -163,5 +168,5 @@ a{
 }
 
 a:hover{
-  color:#cb000097;
+  color:#dcc113dc;
 }

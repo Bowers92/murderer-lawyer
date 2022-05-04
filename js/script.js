@@ -232,7 +232,7 @@ function handleVoting(buttonNumber, totalVotes, players){
       $('#castVote'+i).hide();
     }
     $('#votingSection').hide();
-    $('#endArea').html("The player voted was <span class='emphasis'>" + players[votedIndex] + "</span>");
+    $('#endArea').html("The player voted was <span class='emphasis'><br>" + players[votedIndex] + "</span><br>");
     $('#endSection').show();
   }
   return totalVotes;
