@@ -65,7 +65,7 @@ let questions = [
 "Would you eat this with ice cream?", 
 "Do you think you should cook this?", 
 "Where is this on a list of your 50 favourite foods?",
-"A local icecream place started serving an icecream version of this. How popular will it be?", 
+"A local ice cream place started serving an ice cream version of this. How popular will it be?", 
 "How much do you think is the most that someone has paid for this?", 
 "Would you feed this to your pet?", 
 "If it could walk, would you keep it as a pet?",
