@@ -287,9 +287,9 @@ function welcomePlayers() {
   let welcomeString = "";
   for (let i = 0; i < players.length; i++) {
     if (i === (players.length - 1)) {
-      welcomeString += " and " + players[i];
+      welcomeString += " and <span class='emphasis'>" + players[i] + "</span>";
     } else {
-      welcomeString += players[i] + ", ";
+      welcomeString += "<span class='emphasis'>" + players[i] + "</span>, ";
     }
   }
   $('#welcomeArea').html(welcomeString);
@@ -311,7 +311,7 @@ function roleReadyCheck(){
 //Ready screen for question asking
 function questionReadyCheck(){
   $('#questionHeader').html("Question Time");
-  $('#questionArea').html(currentPlayer + ", time for a question. Gain control and press the button."); 
+  $('#questionArea').html("<span class='emphasis'>" + currentPlayer + "</span>, time for a question. Gain control and press the button."); 
   $('.continueQuestionButton').hide();
   $('#questionButton').html("I'm " + currentPlayer);
   $('#questionButton').show();
