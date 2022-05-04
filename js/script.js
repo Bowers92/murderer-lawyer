@@ -6,6 +6,7 @@ let roundCount = 0;
 let isRoundLimit = false;
 let playerVotes = [0, 0, 0, 0, 0, 0, 0, 0];
 let votedIndex = 0;
+let word = "";
 let words = [
   "raspberries",
   "catfish",
@@ -87,6 +88,7 @@ $(document).ready(function () {
     loadNameInput();
     $('#playerCountSection').hide();
     $('#playerNamingSection').show();
+    word = words[Math.floor(Math.random() * questions.length)]
   });
   //Saving names, determining roles and welcoming players. 
   $('#playerNamingButton').on("click", function () {
@@ -108,7 +110,7 @@ $(document).ready(function () {
   }); 
   //Showing role to player.
   $('#revealRoleButton').on("click", function () {
-    showRole();
+    showRole(words);
   });
   //Determining who is next, 
   $('.continueQuestionButton').on("click", function(){
@@ -130,7 +132,7 @@ $(document).ready(function () {
     if(roundCount > (players.length) * 2){
       isRoundLimit = true;
     }
-    askQuestion(isRoundLimit);
+    askQuestion(isRoundLimit, questions);
   });
   $('#votingButton').on('click', function(){
     var buttonString = "";
@@ -266,12 +268,11 @@ function questionReadyCheck(){
 }
 //Reveals whether player is the outlier, or a regular player
 function showRole() {
-  console.log(currentPlayerIndex + "<-- current player Index");
   if(currentPlayerIndex === outlierIndex){
     $('#roleArea').html("You are the outlier! Try to guess your way through the questions and avoid detection"); 
   } 
   else { 
-    $('#roleArea').html("The word is fish."); 
+    $('#roleArea').html("The word is " + word); 
   }
   $('#revealRoleButton').hide();
   if (currentPlayerIndex === (players.length-1)){
@@ -282,14 +283,15 @@ function showRole() {
 }
 //Asks question --- *** need to create list of questions relevant to category - find out how to read from XML file ***
 //Should read from XML file. 
-function askQuestion(isRoundLimit){
+function askQuestion(isRoundLimit, questions){
+  let question = questions[Math.floor(Math.random() * questions.length)]
+
   $('#questionHeader').html(currentPlayer + " ask the group: ")
   $('#roleSection').hide(); 
   $('#questionSection').show(); 
   $('#questionButton').hide();
   $('.continueQuestionButton').show()
   if(isRoundLimit == false){
-    let question = "Would you put this in your mouth?";
     $('#questionArea').html(question);
   } else{
     $('.continueQuestionButton').html("Time to vote!");
