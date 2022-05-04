@@ -192,6 +192,11 @@ $(document).ready(function () {
     } else{ 
       $('#endArea').append("<br>Unlucky! You were wrong! The Outlier was <span class='emphasis'>" + players[outlierIndex] + "</span>");
     }
+    for(var i = 0; i< playerVotes.length; i++){
+      if(playerVotes[i]===playerVotes[votedIndex] && i != votedIndex){
+        $('#endArea').html("It was a tie! The Outlier wins!")
+      }
+    }
     $('#endButton').hide(); 
     $('#resetButton').show(); 
   });
@@ -225,7 +230,7 @@ function handleVoting(buttonNumber, totalVotes, players){
       $('#castVote'+i).hide();
     }
     $('#votingSection').hide();
-    $('#endArea').html("The player voted was <span class='emphasis'" + players[votedIndex] + "</span>");
+    $('#endArea').html("The player voted was <span class='emphasis'>" + players[votedIndex] + "</span>");
     $('#endSection').show();
   }
   return totalVotes;
