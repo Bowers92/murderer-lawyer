@@ -351,3 +351,8 @@ function askQuestion(isRoundLimit, questions){
     $('#votingButton').show();
   }
 }
+
+function togglePopup(){
+  $('.popupContent').toggle();
+  console.log("clicked")
+}

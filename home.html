@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Web based 'Odd one out' game for university project.">
   <title>The Outlier</title>
+  <link rel="icon" href="images/outlierLogo.png" type="image/x-icon">
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <link rel="stylesheet" href="css/master.css" />
@@ -16,7 +17,7 @@
 <body>
   <div id="main">
     <header>
-      <h1 id="title"><a href="home.html" id="gameTitle">The Outlier</a></h1>
+      <h1 id="title"><a href="home.html" id="gameTitle">The Outlier</a></h1> 
     </header>
     <!-- Player Count Section -->
     <section id='playerCountSection'>
@@ -102,7 +103,22 @@
       </section>
   </div>
   <ul>
-    <li><a href="#.html" style="position:fixed; right:65%;">Rules</li>
+    <div class = 'popupContent'>
+      <div onclick="togglePopup()" class="close-button">
+        x
+      </div>
+      <p>The Outlier is an icebreaking game for 3-8 players to guess who is lacking a bit of crucial information</p>
+      <h1>Rules:</h1>
+      <ol>
+        <li>1. Enter your names. Names must be different from eachother and not empty.</li>
+        <li>2. Every player looks at the secret word (or do they?)</li>
+        <li>3. The outlier doesn't actually see the word and has to pretend they have seen it.</li>
+        <li>4. Players take it in turns to ask eachother questions based on the word.</li>
+        <li>5. At the end of the question round, players vote on who they think the outlier was</li>
+        <li>6. If the outlier isnt picked or there is a tie on the voting, the outlier wins!</li>
+      </ol>
+    </div>
+    <li><a style="position:fixed; right:65%;" onclick="togglePopup()">Rules</a></li>
     <li><a href="home.html" style = "position:fixed; left: 65%;">Reset</a></li>
   </ul>
   <footer>
