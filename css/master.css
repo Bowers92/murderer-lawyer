@@ -88,7 +88,7 @@ body{
   max-height:100%;
   max-width:100%; 
   /* background-image: linear-gradient(to bottom , #b54b12, #dcc113dc); */
-  background-image: linear-gradient(to bottom , #460955, #0E357A);
+  background-image: linear-gradient(to bottom right, #460955, #0E357A);
   font-family: 'Nunito', sans-serif; 
 }
 
