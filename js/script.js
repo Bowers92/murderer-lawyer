@@ -93,12 +93,17 @@ $(document).ready(function () {
   });
   //Saving names, determining roles and welcoming players. 
   $('#playerNamingButton').on("click", function () {
-    processNames(players);
-    outlierIndex= determineRoles(players);
-    welcomePlayers(players);
-    roundLimit = players.length * 2;
-    $('#playerNamingSection').hide();
-    $('#welcomeSection').show();
+    if(validNameInput()){
+      processNames(players);
+      outlierIndex= determineRoles(players);
+      welcomePlayers(players);
+      roundLimit = players.length * 2;
+      $('#playerNamingSection').hide();
+      $('#welcomeSection').show();
+    }
+    else{
+      $('.outputArea').html("Please enter a valid name");
+    }
   });
   //Determining next player, asking for ready check. 
   $('.continueRoleButton').on("click", function () {
@@ -250,6 +255,21 @@ function loadNameInput() {
     inputFieldString += "<input type=\"text\" class=\"nameInput\" id=\"player" + (i + 1) + "Name\" placeholder=\"Player " + (i + 1) + "'s name..\" />";
   }
   $('#playerNamingArea').html(inputFieldString);
+}
+
+function validNameInput(){
+  var checkNames= [];
+  for(var i = 0 ; i < playerCount; i++){
+    var name = $('#player' + (i + 1) + 'Name').val();
+    name = name.replace(/\s/g, ''); //removing spaces
+    if(name === "" || checkNames.includes(name)){
+      return false;
+    } 
+    else{ 
+      checkNames.push(name);
+    }
+  } 
+  return true;
 }
 //Saves user-supplied names into 'players' array
 function processNames(arr) {
