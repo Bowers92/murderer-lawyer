@@ -55,6 +55,10 @@
   margin-right:auto;
 }
 
+.emphasis{
+  color:black;
+  /* font-weight: 600; */
+}
 .textArea{
   padding-bottom:2vh;
 }

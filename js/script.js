@@ -136,7 +136,7 @@ $(document).ready(function () {
   });
   $('#votingButton').on('click', function(){
     var buttonString = "";
-    $('#votingHeader').html("Pick who you think is the killer:");
+    $('#votingHeader').html("Pick who you think is the outlier:");
     for(var i = 0; i < players.length; i++){
       $('#castVote'+i).css({"display":"block"});
       $('#castVote'+i).html(players[i]);
@@ -175,9 +175,9 @@ $(document).ready(function () {
   //End reveal
   $('#endButton').on("click", function(){
     if(outlierIndex === votedIndex){
-      $('#endArea').append("<br>Congratulations! You were right! The killer was " + players[outlierIndex]);
+      $('#endArea').append("<br>Congratulations! You were right! The Outlier was " + players[outlierIndex]);
     } else{ 
-      $('#endArea').append("<br>Unlucky! You were wrong! The killer was " + players[outlierIndex]);
+      $('#endArea').append("<br>Unlucky! You were wrong! The Outlier was " + players[outlierIndex]);
     }
     $('#endButton').hide(); 
     $('#resetButton').show(); 
@@ -253,7 +253,7 @@ function determinePlayer() {
 }
 //Ready screen for role revealing 
 function roleReadyCheck(){
-  $('#roleArea').html(currentPlayer + ", it's your turn! Make sure only you can see the screen and press the button."); 
+  $('#roleArea').html("<span class='emphasis'>" + currentPlayer + "</span>, it's your turn! Make sure only you can see the screen and press the button."); 
   $('.continueRoleButton').hide();
   $('#revealRoleButton').html("I'm " + currentPlayer);
   $('#revealRoleButton').show();
@@ -269,10 +269,10 @@ function questionReadyCheck(){
 //Reveals whether player is the outlier, or a regular player
 function showRole() {
   if(currentPlayerIndex === outlierIndex){
-    $('#roleArea').html("You are the outlier! Try to guess your way through the questions and avoid detection"); 
+    $('#roleArea').html("You are <span class='emphasis'>The Outlier!</span> Pretend you know the word and avoid detection."); 
   } 
   else { 
-    $('#roleArea').html("The word is " + word); 
+    $('#roleArea').html("The food is <span class='emphasis'>" + word + "</span>"); 
   }
   $('#revealRoleButton').hide();
   if (currentPlayerIndex === (players.length-1)){
@@ -285,8 +285,9 @@ function showRole() {
 //Should read from XML file. 
 function askQuestion(isRoundLimit, questions){
   let question = questions[Math.floor(Math.random() * questions.length)]
+  let nextPlayer = players[(currentPlayerIndex + 1) % players.length]; 
 
-  $('#questionHeader').html(currentPlayer + " ask the group: ")
+  $('#questionHeader').html("<span class='emphasis'>" + currentPlayer + "</span> ask <span class='emphasis'>" + nextPlayer + "</span>");
   $('#roleSection').hide(); 
   $('#questionSection').show(); 
   $('#questionButton').hide();
