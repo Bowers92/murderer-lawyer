@@ -79,6 +79,7 @@ let questions = [
 "How would you do in an eating competition with this?", 
 "How likely are you eat this after dropping it on the floor?", 
 "What's your favourite thing about this?",
+"Could this food be served at a world class restaurant?"
 ];
 
 $(document).ready(function () {
@@ -135,59 +136,88 @@ $(document).ready(function () {
     askQuestion(isRoundLimit, questions);
   });
   $('#votingButton').on('click', function(){
-    var buttonString = "";
-    $('#votingHeader').html("Pick who you think is the outlier:");
-    for(var i = 0; i < players.length; i++){
-      $('#castVote'+i).css({"display":"block"});
-      $('#castVote'+i).html(players[i]);
-    }
-    $('#votingArea').html(buttonString);
+    setupVoting();
   });
   //Voting section
   var totalVotes=0;
   $('#castVote0').on("click", function(){
-    totalVotes = handleVoting(0, totalVotes);
+    totalVotes = handleVoting(0, totalVotes, players);
+    determinePlayer(currentPlayer);
+    setupVoting();
   });
   $('#castVote1').on("click", function(){
-    totalVotes = handleVoting(1, totalVotes);
+    totalVotes = handleVoting(1, totalVotes, players);
+    determinePlayer(currentPlayer);
+    setupVoting();
   });
   $('#castVote2').on("click", function(){
-    totalVotes = handleVoting(2, totalVotes);
+    totalVotes = handleVoting(2, totalVotes, players);
+    determinePlayer(currentPlayer);
+    setupVoting();
   });
   $('#castVote3').on("click", function(){
-    totalVotes = handleVoting(3, totalVotes);
+    totalVotes = handleVoting(3, totalVotes, players);
+    determinePlayer(currentPlayer);
+    setupVoting();
   });  
   $('#castVote4').on("click", function(){
-    totalVotes = handleVoting(4, totalVotes);
+    totalVotes = handleVoting(4, totalVotes, players);
+    determinePlayer(currentPlayer);
+    setupVoting();
   });
   $('#castVote5').on("click", function(){
-    totalVotes = handleVoting(5, totalVotes);
+    totalVotes = handleVoting(5, totalVotes, players);
+    determinePlayer(currentPlayer);
+    setupVoting();
   });
   $('#castVote6').on("click", function(){
-    htotalVotes = handleVoting(6, totalVotes);
+    totalVotes = handleVoting(6, totalVotes, players);
+    determinePlayer(currentPlayer);
+    setupVoting();
   });
   $('#castVote7').on("click", function(){
-    totalVotes = handleVoting(7, totalVotes);
+    totalVotes = handleVoting(7, totalVotes, players);
+    determinePlayer(currentPlayer);
+    setupVoting();
   });  
   $('#castVote8').on("click", function(){
-    totalVotes = handleVoting(8, totalVotes);
+    totalVotes = handleVoting(8, totalVotes, players);
+    determinePlayer(currentPlayer);
+    setupVoting();
   });
   //End reveal
   $('#endButton').on("click", function(){
     if(outlierIndex === votedIndex){
-      $('#endArea').append("<br>Congratulations! You were right! The Outlier was " + players[outlierIndex]);
+      $('#endArea').append("<br>Congratulations! You were right! The Outlier was <span class='emphasis'>" + players[outlierIndex] + "</span>");
     } else{ 
-      $('#endArea').append("<br>Unlucky! You were wrong! The Outlier was " + players[outlierIndex]);
+      $('#endArea').append("<br>Unlucky! You were wrong! The Outlier was <span class='emphasis'>" + players[outlierIndex] + "</span>");
     }
     $('#endButton').hide(); 
     $('#resetButton').show(); 
   });
 });
 // *************** functions *******************
-function handleVoting(buttonNumber, totalVotes){
+
+function setupVoting(){
+  var buttonString = "";
+  console.log(currentPlayer);
+    $('#votingHeader').html("<span class='emphasis'>" + currentPlayer + "</span> who you think is the outlier?");
+    for(var i = 0; i < players.length; i++){
+      if(currentPlayer != players[i]){
+        $('#castVote'+i).css({"display":"block"});
+        $('#castVote'+i).html(players[i]);
+      } 
+      else if(currentPlayer === players[i]){
+        $('#castVote'+i).hide();
+      }
+    }
+    $('#votingArea').html(buttonString);
+    $('#votingButton').hide();
+
+}
+function handleVoting(buttonNumber, totalVotes, players){
   totalVotes = totalVotes+1;
   playerVotes[buttonNumber]++;
-  console.log("array: " + playerVotes + "and max: " + Math.max.apply(Math, playerVotes));
   if(totalVotes >= players.length){
     votedIndex = playerVotes.indexOf(Math.max.apply(Math, playerVotes));
     console.log("votedIndex = " + votedIndex + " Player: " + players[votedIndex]);
@@ -195,7 +225,7 @@ function handleVoting(buttonNumber, totalVotes){
       $('#castVote'+i).hide();
     }
     $('#votingSection').hide();
-    $('#endArea').html("The player voted was " + players[votedIndex]);
+    $('#endArea').html("The player voted was <span class='emphasis'" + players[votedIndex] + "</span>");
     $('#endSection').show();
   }
   return totalVotes;
