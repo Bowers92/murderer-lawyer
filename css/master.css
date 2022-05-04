@@ -73,6 +73,10 @@ button{
   float:bottom;
 }
 
+button:hover{
+  background-color:rgb(158, 58, 4)
+}
+
 ul{
   list-style-type:none;
   text-align: center;
@@ -118,4 +122,8 @@ section{
 a{
   text-decoration:underline;
   color:rgb(254, 254, 254);
+}
+
+a:hover{
+  color:#cb000097;
 }
