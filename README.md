@@ -1,3 +1,5 @@
+# MMU Year 2 Project
+
 # OddOneOut
 HTML5 based 'icebreaker' type game. For second year group project. Based on other ice breaking mobile games such as "OddOneOut". 
 
