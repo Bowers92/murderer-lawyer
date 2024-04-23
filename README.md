@@ -1,4 +1,5 @@
-# MMU Year 2 Project
+# Murderer Lawyer 
+Year 2 Manchester Metropolitan University group project 
 
 # OddOneOut
 HTML5 based 'icebreaker' type game. For second year group project. Based on other ice breaking mobile games such as "OddOneOut". 
